@@ -1,6 +1,6 @@
 # Codama-Dart Examples
 
-This repository contains a collection of example projects demonstrating how to use the **codama-dart renderer** in various scenarios. Each example showcases different ways to integrate codama-dart into your Dart and Solana workflows, making it easy to get started and explore its capabilities.
+This repository contains a collection of example projects that demonstrate how to use the codama-dart renderer in different scenarios. Each example shows how to integrate codama-dart into a Dart project and use it to generate client code from Solana program IDLs.
 
 ## Example Projects
 
@@ -17,6 +17,11 @@ Each example contains its own `README.md` with setup and usage instructions. To 
    ```
 
 2. Follow the steps in the example's `README.md`.
+
+3. Since we have not published the npm package:
+  - Clone the `codama-dart` renderer locally from our repository.
+  - In your project’s package.json, create a local link to this cloned repo [here](https://github.com/LimeChain/codama-dart-examples/blob/simple-example/multi-program-example/anchor-program/package.json).
+  - Use the same approach shown in that example, but update the path so it points to your local copy of `codama-dart`.
 
 ## About Codama-Dart
 
