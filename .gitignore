@@ -1,0 +1,16 @@
+.anchor
+.DS_Store
+target
+**/*.rs.bk
+node_modules
+test-ledger
+.yarn
+
+# Ignore the local keypair
+wallet.json
+ledger
+
+.dart_tool/
+
+# Generated client 
+clients
