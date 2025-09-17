@@ -3,7 +3,7 @@ import 'package:solana/solana.dart';
 import '../constants.dart';
 import '../../../clients/dart/generated/anchor_data_structures/lib.dart';
 
-void modifyStruct(RpcClient client, Ed25519HDKeyPair payer) async {
+Future<String> modifyStruct(RpcClient client, Ed25519HDKeyPair payer) async {
   final systemProgram = Ed25519HDPublicKey.fromBase58(SystemProgram.programId);
 
   final Ed25519HDKeyPair structAcc = await Ed25519HDKeyPair.fromMnemonic(
@@ -71,18 +71,8 @@ void modifyStruct(RpcClient client, Ed25519HDKeyPair payer) async {
 
     final message = Message(instructions: [modifyStructIx]);
     final signature = await client.signAndSendTransaction(message, [payer]);
-    print('Modify Struct Txn Signature: $signature');
-              
+    return signature;
   } catch (e) {
-    final dsError = DataStructuresError.fromSolanaErrorString(e);
-    if (dsError != null) {
-      print('Custom program error: $dsError');
-      // You can also check the type:
-      if (dsError is StringTooLongError) {
-        print('String was too long!');
-      }
-    } else {
-      print('Other error: $e');
-    }
+    throw Exception('Failed to modify struct data structure: $e');
   }
 }

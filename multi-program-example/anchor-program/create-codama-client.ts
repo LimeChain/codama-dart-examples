@@ -3,7 +3,7 @@ import { rootNodeFromAnchor } from '@codama/nodes-from-anchor';
 import { renderVisitor } from 'codama-dart'; 
 import path from 'path';
 import fs from 'fs';
-
+    
 // Load the IDL files explicitly
 const anchorProgramIdl = JSON.parse(fs.readFileSync('target/idl/anchor_program.json', 'utf8'));
 const anchorDataStructuresIdl = JSON.parse(fs.readFileSync('target/idl/data_structures.json', 'utf8'));

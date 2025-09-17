@@ -1,6 +1,6 @@
 import 'package:solana/solana.dart';
 
-Future airdropSol(RpcClient client, Ed25519HDKeyPair user) async {
+Future<String> airdropSol(RpcClient client, Ed25519HDKeyPair user) async {
   final lamports = 1_000_000_000; // 1 SOL in lamports
 
   try {
@@ -8,9 +8,10 @@ Future airdropSol(RpcClient client, Ed25519HDKeyPair user) async {
       user.publicKey.toBase58(),
       lamports * 50,
     );
-    print('Airdrop transaction signature: $signature');
+
+    return signature;
   } catch (e) {
     print('Error fetching balance: $e');
-    return null;
+    throw Exception('Failed to fetch balance: $e');
   }
 }

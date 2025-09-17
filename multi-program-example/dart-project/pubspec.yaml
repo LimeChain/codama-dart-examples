@@ -9,6 +9,7 @@ environment:
 # Add regular dependencies here.
 dependencies:
   solana: ^0.31.2+1
+  bip39: ^1.0.6
 
 dev_dependencies:
   lints: ^6.0.0

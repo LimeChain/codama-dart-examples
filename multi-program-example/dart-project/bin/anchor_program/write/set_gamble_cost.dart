@@ -2,7 +2,7 @@ import 'package:solana/solana.dart';
 import 'dart:convert';
 import '../../../clients/dart/generated/anchor_program/lib.dart';
 
-void setGambleCost(
+Future<String> setGambleCost(
   RpcClient client,
   Ed25519HDKeyPair payer,
   Ed25519HDPublicKey programId,
@@ -26,9 +26,8 @@ void setGambleCost(
 
     final message = Message(instructions: [setGambleCostIx]);
     final signature = await client.signAndSendTransaction(message, [payer]);
-    print("Transaction signature to set gamble cost: $signature");
+    return signature;
   } catch (e) {
-    print('Error getting : $e');
-    return;
+    throw Exception('Failed to set gamble cost: $e');
   }
 }

@@ -2,7 +2,7 @@ import 'package:solana/solana.dart';
 import 'dart:convert';
 import '../../clients/dart/generated/anchor_program/lib.dart';
 
-void initialize(
+Future<String> initialize(
   RpcClient client,
   Ed25519HDKeyPair payer,
   Ed25519HDPublicKey programId,
@@ -35,9 +35,9 @@ void initialize(
 
     final message = Message(instructions: [initializeIx]);
     final signature = await client.signAndSendTransaction(message, [payer]);
-
-    print("Transaction signature to initialize a gamble instruction: $signature");
+    return signature;
   } catch (e) {
     print('Error signing and sending transaction: $e');
+    throw Exception('Failed to initialize the program: $e');
   }
 }

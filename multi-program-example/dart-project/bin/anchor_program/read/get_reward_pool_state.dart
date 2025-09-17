@@ -2,7 +2,7 @@ import 'package:solana/dto.dart';
 import 'package:solana/solana.dart';
 import 'dart:convert';
 
-void getRewardPoolState(RpcClient client, Ed25519HDPublicKey programId) async {
+Future<int?> getRewardPoolState(RpcClient client, Ed25519HDPublicKey programId) async {
   try {
     final rewardPoolSeeds = [utf8.encode('reward_pool')];
 
@@ -19,10 +19,8 @@ void getRewardPoolState(RpcClient client, Ed25519HDPublicKey programId) async {
     );
 
     final lamports = accountInfo.value?.lamports;
-    print(
-      'Reward pool SOL: ${lamports != null ? lamports / 1_000_000_000 : 'Account not found'}',
-    );
+    return lamports;
   } catch (e) {
-    print('Error fetching Gamble State: $e');
+    throw Exception('Failed to fetch reward pool state: $e');
   }
 }

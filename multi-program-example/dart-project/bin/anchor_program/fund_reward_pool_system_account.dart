@@ -1,9 +1,8 @@
 import 'package:solana/solana.dart';
 import 'dart:convert';
-import '../../clients/dart/generated/anchor_program/lib.dart';
 import '../data_structures/constants.dart'; 
 
-void fundRewardPoolSystemAccount(
+Future<String> fundRewardPoolSystemAccount(
   RpcClient client,
   Ed25519HDKeyPair payer,
   Ed25519HDPublicKey programId,
@@ -28,8 +27,8 @@ void fundRewardPoolSystemAccount(
     final message = Message(instructions: [instruction]);
     final signature = await client.signAndSendTransaction(message, [payer]);
 
-    print('Funded reward pool. Transaction signature: $signature');
+    return signature;
   } catch (e) {
-    print('Error creating reward pool account: $e');
+    throw Exception('Failed to fund reward pool system account: $e');
   }
 }

@@ -2,7 +2,7 @@ import 'package:solana/solana.dart';
 import 'dart:convert';
 import '../../clients/dart/generated/anchor_program/lib.dart';
 
-void gamble(
+Future<String> gamble(
   RpcClient client,
   Ed25519HDKeyPair payer,
   Ed25519HDPublicKey programId,
@@ -33,25 +33,16 @@ void gamble(
 
     final message = Message(instructions: [gambelIx]);
     final signature = await client.signAndSendTransaction(message, [payer]);
-    print("Transaction signature to gamble: $signature");
 
-    final txDetails = await client.getTransaction(signature, commitment: Commitment.confirmed);
-    final logs = txDetails?.meta?.logMessages ?? [];
-    final anchorError = AnchorProgramError.fromSolanaErrorString(logs.join('\n'));
-    if (anchorError != null) {
-      print(anchorError);
-    } else if (txDetails?.meta?.err != null) {
-      print('Transaction failed, but no custom error found in logs.');
-    } else {
-      print('Transaction succeeded or no error info available.');
-    }
-
+    return signature;
     } catch (e) {
     final anchorError = AnchorProgramError.fromSolanaErrorString(e);
     if (anchorError != null) {
       print(anchorError);
+      throw Exception('Gamble Program Error: $anchorError');
     } else {
       print('Error in Gamble Program: $e');
+      throw Exception('Failed to execute gamble: $e');
     }
   }
 }

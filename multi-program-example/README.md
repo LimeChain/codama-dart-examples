@@ -33,11 +33,18 @@ This will generate the `clients/` folder inside [`dart-project/`](dart-project/c
 
 ### 3. Set Up Dart Project
 
-Navigate to the Dart project and install dependencies:
+1. Navigate to the Dart project and install dependencies:
 
 ```sh
 cd ../dart-project
 dart pub get
+```
+
+2. Before running the Dart CLI, you must generate the required mnemonic files for the test wallets. Run the following command to automatically create all necessary mnemonics in the keypairs/ directory:
+
+
+```sh
+dart run scripts/generate_all_mnemonics.dart
 ```
 
 ### 4. Run the Dart CLI

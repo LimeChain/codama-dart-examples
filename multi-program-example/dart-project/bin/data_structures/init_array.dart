@@ -3,7 +3,7 @@ import '../../clients/dart/generated/anchor_data_structures/lib.dart';
 import 'constants.dart';
 
 
-void initArray(RpcClient client, Ed25519HDKeyPair payer) async {
+Future<String> initArray(RpcClient client, Ed25519HDKeyPair payer) async {
   final systemProgram = Ed25519HDPublicKey.fromBase58(SystemProgram.programId);
 
   final Ed25519HDKeyPair arrayAcc = await Ed25519HDKeyPair.fromMnemonic(
@@ -16,12 +16,12 @@ void initArray(RpcClient client, Ed25519HDKeyPair payer) async {
     system_program: systemProgram,
   ).toInstruction();
 
-  final message = Message(instructions: [InitArrayInstructionIx]);
-  final signature = await client.signAndSendTransaction(message, [payer, arrayAcc]);
-
-  print('Init Array Txn Signature: $signature');
-
-  try {} catch (e) {
+  try {
+    final message = Message(instructions: [InitArrayInstructionIx]);
+    final signature = await client.signAndSendTransaction(message, [payer, arrayAcc]);
+    return signature;
+  } catch (e) {
     print('Error initializing array data structure: $e');
+    throw Exception('Failed to initialize array data structure: $e');
   }
 }
