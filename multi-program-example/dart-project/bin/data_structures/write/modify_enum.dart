@@ -13,14 +13,7 @@ Future<String> modifyEnum(RpcClient client, Ed25519HDKeyPair payer) async {
   try {
     final modifyEnumIx = ModifyEnumInstruction(
       enums_acc: enumAcc.publicKey,
-      my_enum: VariantA(300, true), // -> Correct
-      // my_enum: VariantB(x: BigInt.from(-150), y: "Updated VariantB"), // -> Correct
-      // my_enum: VariantC(), // -> Correct
-      // my_enum: VariantE(nested: SimpleStruct(name: "alabbala", age: 23, location: "Ruse"), flag: true) // -> Correct
-      // my_enum: VariantF(Uint32List.fromList([10, 20])), // -> Correct
-      // my_enum: VariantG("Hello, VariantG!"), // -> Correct
-      // my_enum: VariantH(Uint8List.fromList([0, 2, 1, 2])), // -> Correct
-      // my_enum: VariantI(a: 12, b: BigInt.from(120), c: true, d: "VariantI"), //  -> Correct
+      my_enum: VariantA(300, true),
       enum_vec: [
         VariantA(10, false),
         VariantB(x: BigInt.from(20), y: "VariantB in vec"),
