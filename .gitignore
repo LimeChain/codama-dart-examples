@@ -13,6 +13,9 @@ ledger
 # Generated client 
 clients
 
+# Anchor wallet keypair
+wallet.json
+*.mnemonic
 
 # Files and directories created by pub
 .dart_tool/

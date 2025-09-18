@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 use anchor_lang::system_program::{transfer, Transfer};
 
-declare_id!("BGjBQiT7DyKne2Zx1t21b5r6tMGjozUGKAqSisCaYrA3");
+declare_id!("5h3iDxqj2ocyA33CAkhKqq7jk8TsQcxJEZ1UQgwkkj14");
 
 // Constants
 pub const DISCRIMINATOR_SIZE: usize = 8;

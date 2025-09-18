@@ -7,6 +7,9 @@ This repository contains a collection of example projects that demonstrate how t
 - [`multi-program-example/`](multi-program-example/):  
   An advanced example integrating a Solana Anchor program with a Dart CLI. It shows how to generate Dart clients from Anchor and use codama-dart for rich terminal output.
 
+- [`codama-example/`](codama-example/):  
+  Example to showcase how to use the dart-renderer with Codama IDL.
+
 ## Getting Started
 
 Each example contains its own `README.md` with setup and usage instructions. To try out an example:
