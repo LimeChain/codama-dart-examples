@@ -12,7 +12,7 @@ pub const REWARD_POOL_SEED: &[u8] = b"reward_pool";
 pub mod anchor_program {
     use super::*;
 
-     pub fn initialize(ctx: Context<Initialize>, gamble_cost: u64) -> Result<()> {
+    pub fn initialize(ctx: Context<Initialize>, gamble_cost: u64) -> Result<()> {
         let config: &mut Account<'_, Config> = &mut ctx.accounts.config;
         config.admin = *ctx.accounts.admin.key;
         config.gamble_cost = gamble_cost;
