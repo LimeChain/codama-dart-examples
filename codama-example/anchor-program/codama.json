@@ -1,0 +1,16 @@
+{
+    "idl": "target/idl/anchor_program.json",
+    "before": [],
+    "scripts": {
+        "dart": {
+            "from": "@codama/renderers-dart",
+            "args": [
+                "../dart-project/clients/dart/generated",
+                {
+                    "crateFolder": "clients/dart",
+                    "formatCode": true
+                }
+            ]
+        }
+    }
+}
